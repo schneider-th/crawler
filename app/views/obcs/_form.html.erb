@@ -1,25 +1,12 @@
-<%= form_for(@obc) do |f| %>
-  <% if @obc.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@obc.errors.count, "error") %> prohibited this obc from being saved:</h2>
+<%= simple_form_for(@obc) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @obc.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :landingpage %>
+    <%= f.input :first_level %>
+  </div>
 
-  <div class="field">
-    <%= f.label :landingpage %><br>
-    <%= f.check_box :landingpage %>
-  </div>
-  <div class="field">
-    <%= f.label :first_level %><br>
-    <%= f.check_box :first_level %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

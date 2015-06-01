@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Obcs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Landingpage</th>
+      <th>First level</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @obcs.each do |obc| %>
+      <tr>
+        <td><%= obc.landingpage %></td>
+        <td><%= obc.first_level %></td>
+        <td><%= link_to 'Show', obc %></td>
+        <td><%= link_to 'Edit', edit_obc_path(obc) %></td>
+        <td><%= link_to 'Destroy', obc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Obc', new_obc_path %>

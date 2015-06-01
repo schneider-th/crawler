@@ -10,18 +10,20 @@ class ObcWorker
 
     @first_level_boolean = false
 
-
     if @page.links.external.any? { |link| link.include?(url) }
-      @laning_page_boolean = true
+      @laningpage_boolean = true
+      @first_level_boolean = true
     else
-      @laning_page_boolean = true
+      @laningpage_boolean = true
+      for link in @page.links.internal
+        if @first_level_boolean == true then
+          break
+        end
+        @first_level_boolean = true if @subpage.links.external.any? { |link| link.include?(url) }
+      end
     end
 
-    for link in @page.links.internal
-      if @first_level_boolean == true then
-        break
-      end
-      @first_level_boolean = true if @subpage.links.external.any? { |link| link.include?(url) }
-    end
+    @obc = Obc.create!(vendor_id: @vendor.id, landingpage: @laningpage_boolean, first_level: @first_level_boolean)
+
   end
 end

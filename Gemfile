@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'metainspector'
 gem 'sidekiq'
+gem 'unicorn'
+gem 'sidekiq-unique-jobs'
+gem 'foreman'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -22,7 +25,4 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
-end
-group :production do
-  gem 'unicorn'
 end

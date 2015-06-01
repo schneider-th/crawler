@@ -1,0 +1,7 @@
+Redis installieren:
+sudo apt-get install redis-server
+
+
+Händler in seeds.rb hinzufügen
+
+rails generate scaffold Check name:string

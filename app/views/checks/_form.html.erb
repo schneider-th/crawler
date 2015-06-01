@@ -1,0 +1,33 @@
+<script>
+  $(document).ready(function(){
+    $('#selectExport').click(function() {
+      $('.check_boxes.optional.export').prop('checked', true);
+    });
+  });
+</script>
+
+<%= simple_form_for(@check) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :url %>
+  </div>
+
+  <% Vendor.each_slice(3) do |slice| %>
+    <div class="row">
+      <% slice.each do |vendor| -%>
+          <div class="col-md-4">
+            <%= f.association :vendors, collection: Vendor.all, as: :check_boxes, label_method: :name, value_method: :id, label: false, input_html: { class: "vendor" } %>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

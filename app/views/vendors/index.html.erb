@@ -8,6 +8,8 @@
       <th>Vendorid</th>
       <th>Name</th>
       <th>Url</th>
+      <th>Landingpage OBC</th>
+      <th>First Level OBC</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
         <td><%= vendor.vendorid %></td>
         <td><%= vendor.name %></td>
         <td><%= vendor.url %></td>
+        <td><%= vendor.obc.landingpage rescue 'No result' %></td>
+        <td><%= vendor.obc.first_level rescue 'No result' %></td>
         <td><%= link_to 'Show', vendor %></td>
         <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
         <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
